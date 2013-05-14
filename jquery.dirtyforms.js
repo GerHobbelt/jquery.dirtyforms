@@ -169,7 +169,7 @@ if (typeof jQuery == 'undefined') throw ("jQuery Required");
 				var node = this;
 
 				// remove the current dirty class
-				$(node).removeClass($.DirtyForms.dirtyClass)
+				$(node).removeClass($.DirtyForms.dirtyClass);
 
 				if ($(node).is('form')) {
 					// remove all dirty classes from children
@@ -209,13 +209,13 @@ if (typeof jQuery == 'undefined') throw ("jQuery Required");
 	// DO NOT ADD MORE METHODS LIKE THESE, ADD METHODS WHERE INDICATED ABOVE
 	$.fn.setDirty = function(){
 		return this.dirtyForms('setDirty');
-	}
+	};
 	$.fn.isDirty = function(){
 		return this.dirtyForms('isDirty');
-	}
+	};
     $.fn.cleanDirty = function(){
 		return this.dirtyForms('setClean');
-    }
+    };
 
 	// Private Properties and Methods
 	var settings = $.DirtyForms = $.extend({
@@ -234,11 +234,11 @@ if (typeof jQuery == 'undefined') throw ("jQuery Required");
 
 	var onReset = function() {
 		$(this).parents('form').dirtyForms('setClean');
-	}
+	};
 
 	var onSelectionChange = function() {
 		$(this).dirtyForms('setDirty');
-	}
+	};
 
 	var onFocus = function() {
 		element = $(this);
@@ -247,12 +247,12 @@ if (typeof jQuery == 'undefined') throw ("jQuery Required");
 		}
 		settings.focused['element'] = element;
 		settings.focused['value']	= element.val();
-	}
+	};
 	var focusedIsDirty = function() {
 		// Check, whether the value of focused element has changed
 		return settings.focused["element"] &&
 			(settings.focused["element"].val() !== settings.focused["value"]);
-	}
+	};
 
 	var dirtylog = function(msg){
 		if(!$.DirtyForms.debug) return;
@@ -262,7 +262,7 @@ if (typeof jQuery == 'undefined') throw ("jQuery Required");
 			settings.hasConsoleLog ?
 				window.console.log(msg) :
 				alert(msg);
-	}
+	};
 	
 	var bindExit = function(){
 		if(settings.exitBound) return;
@@ -292,7 +292,7 @@ if (typeof jQuery == 'undefined') throw ("jQuery Required");
 		}
 
 		settings.exitBound = true;
-	}
+	};
 	
 	var getIgnoreAnchorSelector = function(){
 		var result = '';
@@ -303,19 +303,19 @@ if (typeof jQuery == 'undefined') throw ("jQuery Required");
 			}
 		});
 		return result;
-	}
+	};
 
 	var aBindFn = function(ev){
 		// Filter out any anchors the helpers wish to exclude
 		if (!$(this).is(getIgnoreAnchorSelector())) {
 			bindFn(ev);
 		}
-	}
+	};
 
 	var formBindFn = function(ev){
 		settings.currentForm = this;
 		bindFn(ev);
-	}
+	};
 
 	var beforeunloadBindFn = function(ev){
 		var result = bindFn(ev);
@@ -341,7 +341,7 @@ if (typeof jQuery == 'undefined') throw ("jQuery Required");
 			// For Safari
 			return result;
 		}
-	}
+	};
 
 	var bindFn = function(ev){
 		dirtylog('Entering: Leaving Event fired, type: ' + ev.type + ', element: ' + ev.target + ', class: ' + $(ev.target).attr('class') + ' and id: ' + ev.target.id);
@@ -420,7 +420,7 @@ if (typeof jQuery == 'undefined') throw ("jQuery Required");
 		dirtylog('Deferring to the dialog');
 		settings.dialog.fire($.DirtyForms.message, $.DirtyForms.title);
 		settings.dialog.bind();
-	}
+	};
 
 	var isDifferentTarget = function(ev){
 		var aTarget = $(ev.target).attr('target');
@@ -428,7 +428,7 @@ if (typeof jQuery == 'undefined') throw ("jQuery Required");
 			aTarget = aTarget.toLowerCase();
 		}
 		return (aTarget === '_blank');
-	}
+	};
 	
 	var choiceCommit = function(ev){
 		if (settings.deciding) {
@@ -440,7 +440,7 @@ if (typeof jQuery == 'undefined') throw ("jQuery Required");
 			}
 			$(document).trigger('choicecommitAfter.dirtyforms');
 		}
-	}
+	};
 
 	var decidingCancel = function(ev){
 		ev.preventDefault();
@@ -453,7 +453,7 @@ if (typeof jQuery == 'undefined') throw ("jQuery Required");
 		$(document).trigger('decidingcancelledAfter.dirtyforms');
 		settings.dialogStash = false;
 		settings.deciding = settings.currentForm = settings.decidingEvent = false;
-	}
+	};
 
 	var decidingContinue = function(ev){
 		window.onbeforeunload = null; // fix for chrome
@@ -462,7 +462,7 @@ if (typeof jQuery == 'undefined') throw ("jQuery Required");
 		$(document).trigger('decidingcontinued.dirtyforms');
 		refire(settings.decidingEvent);
 		settings.deciding = settings.currentForm = settings.decidingEvent = false;
-	}
+	};
 
 	var clearUnload = function(){
 		// I'd like to just be able to unbind this but there seems
@@ -471,7 +471,7 @@ if (typeof jQuery == 'undefined') throw ("jQuery Required");
 		$(window).unbind('beforeunload', beforeunloadBindFn);
 		window.onbeforeunload = null;
 		$(document).trigger('beforeunload.dirtyforms');
-	}
+	};
 
 	var refire = function(e){
 		$(document).trigger('beforeRefire.dirtyforms');
@@ -504,6 +504,6 @@ if (typeof jQuery == 'undefined') throw ("jQuery Required");
 				target.trigger(e.type);
 				break;
 		}
-	}
+	};
 
 })(jQuery);
