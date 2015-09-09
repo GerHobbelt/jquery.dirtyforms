@@ -237,6 +237,7 @@ if (typeof jQuery == 'undefined') throw ("jQuery Required");
 	};
 
 	var onSelectionChange = function() {
+		if ($(this).hasClass($.DirtyForms.ignoreClass)) return;
 		$(this).dirtyForms('setDirty');
 	};
 
@@ -271,17 +272,17 @@ if (typeof jQuery == 'undefined') throw ("jQuery Required");
 		
 		// For jQuery 1.7+, use on()
 		if (typeof $(document).on === 'function') {
-			$(document).on('click','a',aBindFn);
+			$(document).on('click','a[href]',aBindFn);
 			$(document).on('submit','form',formBindFn);
 			if (settings.watchParentDocs && inIframe) {
-				$(top.document).on('click','a',aBindFn);
+				$(top.document).on('click','a[href]',aBindFn);
 				$(top.document).on('submit','form',formBindFn);
 			}
 		} else { // For jQuery 1.4.2 - 1.7, use delegate()
-			$(document).delegate('a','click',aBindFn);
+			$(document).delegate('a[href]','click',aBindFn);
 			$(document).delegate('form','submit',formBindFn);
 			if (settings.watchParentDocs && inIframe) {
-				$(top.document).delegate('a','click',aBindFn);
+				$(top.document).delegate('a[href]','click',aBindFn);
 				$(top.document).delegate('form','submit',formBindFn);
 			}
 		}
@@ -306,8 +307,10 @@ if (typeof jQuery == 'undefined') throw ("jQuery Required");
 	};
 
 	var aBindFn = function(ev){
+		var a = $(this);
+		
 		// Filter out any anchors the helpers wish to exclude
-		if (!$(this).is(getIgnoreAnchorSelector())) {
+		if (!a.is(getIgnoreAnchorSelector()) && typeof a.attr('href') != 'undefined') {
 			bindFn(ev);
 		}
 	};
