@@ -1,15 +1,14 @@
 {
-  "name": "jquery.dirtyforms",
-  "main": "jquery.dirtyforms.min.js",
-  "version": "1.2.3",
+  "name": "jquery.dirtyforms.dialogs.facebox",
+  "main": "jquery.dirtyforms.dialogs.facebox.min.js",
+  "version": "1.1.0",
   "homepage": "https://github.com/snikch/jquery.dirtyforms",
   "authors": [
-    "Mal Curtis <mal@mal.co.nz>",
-    "Shad Storhaug <shad@shadstorhaug.com>",
-    "Nick Coyne <nick@codevader.com>"
+    "Shad Storhaug <shad@shadstorhaug.com>"
   ],
-  "description": "A jQuery Plugin that monitors forms for change and alerts the user before leaving the page.",
+  "description": "A module to enable automatic Facebox dialog support when using JQuery Dirty Forms.",
   "keywords": [
+    "facebox",
     "dirty",
     "forms",
     "HTML",
@@ -30,6 +29,7 @@
     ".git"
   ],
   "dependencies": {
-    "jquery": ">= 1.4.2"
+    "jquery.dirtyforms": ">=1.0.0",
+    "jquery.facebox": ">=1.4.1"
   }
 }

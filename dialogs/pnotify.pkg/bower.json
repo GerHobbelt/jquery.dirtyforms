@@ -1,15 +1,14 @@
 {
-  "name": "jquery.dirtyforms",
-  "main": "jquery.dirtyforms.min.js",
-  "version": "1.2.3",
+  "name": "jquery.dirtyforms.dialogs.pnotify",
+  "main": "jquery.dirtyforms.dialogs.pnotify.min.js",
+  "version": "1.1.0",
   "homepage": "https://github.com/snikch/jquery.dirtyforms",
   "authors": [
-    "Mal Curtis <mal@mal.co.nz>",
-    "Shad Storhaug <shad@shadstorhaug.com>",
-    "Nick Coyne <nick@codevader.com>"
+    "Shad Storhaug <shad@shadstorhaug.com>"
   ],
-  "description": "A jQuery Plugin that monitors forms for change and alerts the user before leaving the page.",
+  "description": "A module to enable automatic PNotify dialog support when using JQuery Dirty Forms.",
   "keywords": [
+    "pnotify",
     "dirty",
     "forms",
     "HTML",
@@ -30,6 +29,8 @@
     ".git"
   ],
   "dependencies": {
-    "jquery": ">= 1.4.2"
+	"jquery": ">=1.6.4",
+    "jquery.dirtyforms": ">=1.0.0",
+    "pnotify": ">=1.3"
   }
 }

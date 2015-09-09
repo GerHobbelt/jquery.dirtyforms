@@ -1,15 +1,14 @@
 {
-  "name": "jquery.dirtyforms",
-  "main": "jquery.dirtyforms.min.js",
-  "version": "1.2.3",
+  "name": "jquery.dirtyforms.dialogs.blockui",
+  "main": "jquery.dirtyforms.dialogs.blockui.min.js",
+  "version": "1.1.0",
   "homepage": "https://github.com/snikch/jquery.dirtyforms",
   "authors": [
-    "Mal Curtis <mal@mal.co.nz>",
-    "Shad Storhaug <shad@shadstorhaug.com>",
-    "Nick Coyne <nick@codevader.com>"
+    "Shad Storhaug <shad@shadstorhaug.com>"
   ],
-  "description": "A jQuery Plugin that monitors forms for change and alerts the user before leaving the page.",
+  "description": "A module to enable automatic BlockUI dialog support when using JQuery Dirty Forms.",
   "keywords": [
+    "blockui",
     "dirty",
     "forms",
     "HTML",
@@ -30,6 +29,8 @@
     ".git"
   ],
   "dependencies": {
-    "jquery": ">= 1.4.2"
+	"jquery": ">=1.7.0",
+    "jquery.dirtyforms": ">=1.0.0",
+    "blockui": "latest"
   }
 }
